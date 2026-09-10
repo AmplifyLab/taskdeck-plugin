@@ -1,0 +1,12 @@
+{
+    "name": "taskdeck",
+    "version": "0.1.0",
+    "description": "Track every task on your TaskDeck board. /taskdeck:track turns Autotrack on for a repository or a workspace; the bundled connector gives Claude the TaskDeck tools.",
+    "author": {
+        "name": "AmplifyLab"
+    },
+    "homepage": "https://taskdeck.me",
+    "repository": "https://github.com/AmplifyLab/taskdeck-plugin",
+    "license": "MIT",
+    "keywords": ["taskdeck", "kanban", "tasks", "autotrack", "board", "mcp"]
+}

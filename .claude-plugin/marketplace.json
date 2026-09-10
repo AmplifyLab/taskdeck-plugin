@@ -1,0 +1,20 @@
+{
+    "name": "taskdeck",
+    "owner": {
+        "name": "AmplifyLab"
+    },
+    "metadata": {
+        "description": "TaskDeck for Claude Code: the track command and the TaskDeck connector.",
+        "version": "0.1.0"
+    },
+    "plugins": [
+        {
+            "name": "taskdeck",
+            "source": "./",
+            "description": "Track every task on your TaskDeck board. /taskdeck:track turns Autotrack on for a repository or a workspace; the bundled connector gives Claude the TaskDeck tools.",
+            "version": "0.1.0",
+            "keywords": ["taskdeck", "kanban", "tasks", "autotrack", "board", "mcp"],
+            "category": "productivity"
+        }
+    ]
+}

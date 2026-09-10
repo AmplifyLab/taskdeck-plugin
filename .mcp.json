@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+        "taskdeck": {
+            "type": "http",
+            "url": "https://mcp.taskdeck.me/mcp"
+        }
+    }
+}
