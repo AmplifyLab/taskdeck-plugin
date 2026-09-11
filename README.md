@@ -6,8 +6,8 @@
 
 | Piece | What it is | What it is for |
 |---|---|---|
-| **TaskDeck connector** | The connection between Claude and your TaskDeck account, added once to your Claude account | Gives Claude the TaskDeck tools (boards, cards, Autotrack) in every Claude app: the desktop app's Chat and Code tabs, the terminal and mobile |
-| **TaskDeck plugin** (this repository) | A Claude Code add-on | Adds `/taskdeck:track`, the setup command. It connects TaskDeck first if the connector is missing |
+| **TaskDeck MCP server** | The connection between Claude Code and your TaskDeck account: a `taskdeck` entry in `~/.claude.json` | Gives Claude Code the TaskDeck tools (boards, cards, Autotrack) in the terminal, the desktop app's Code tab and IDEs, with a Claude account or an API key |
+| **TaskDeck plugin** (this repository) | A Claude Code add-on | Adds `/taskdeck:track`, the setup command. It adds the TaskDeck server first if it is missing |
 | **`/taskdeck:track`** | The setup, run once per folder | Picks or creates the board, turns Autotrack on and writes a short block into the folder's CLAUDE.md |
 
 ## Quick start
@@ -25,24 +25,27 @@
    /taskdeck:track
    ```
 
-   If TaskDeck is not connected yet, it opens Claude's "Add custom connector" dialog with TaskDeck filled in. Click **Add**, then sign in to TaskDeck and approve. The setup continues on its own and asks at most a few questions: which board, how it should look, when finished cards leave it, and whose name Claude's work carries.
+   If TaskDeck is not connected yet, it adds the TaskDeck server to `~/.claude.json` and asks you to open a new session, sign in with `/mcp` and run `/taskdeck:track` again. The setup then asks at most a few questions: which board, how it should look, when finished cards leave it, and whose name Claude's work carries.
 
 `/taskdeck:track Web` tracks the folder on an existing board called Web without asking which.
+
+No terminal, only the desktop app? Copy the setup prompt from the Connections page in TaskDeck and paste it into the Code tab. It needs no plugin.
 
 ## Manual install
 
 Do the same steps by hand to see what each one does:
 
-1. **Connect TaskDeck.** In Claude, open Customize → Connectors, choose Add custom connector, name it TaskDeck and use `https://mcp.taskdeck.me/mcp`. Click Connect and approve in TaskDeck. The TaskDeck tools now work in every Claude app.
+1. **Connect TaskDeck.** Add this under `"mcpServers"` in `~/.claude.json`:
+
+   ```json
+   "taskdeck": { "type": "http", "url": "https://mcp.taskdeck.me/mcp" }
+   ```
+
+   In the terminal, `claude mcp add --transport http --scope user taskdeck https://mcp.taskdeck.me/mcp` does the same. Open a new session and run `/mcp` to sign in to TaskDeck.
 2. **Install the plugin** with the two commands above. `/taskdeck:track` appears in Claude Code.
 3. **Run `/taskdeck:track`** in the folder.
 
-Signed in to Claude Code with an API key instead of a Claude account? Connectors from claude.ai are not available there. Add the connection to Claude Code directly, then start a new session:
-
-```bash
-claude mcp add --transport http taskdeck https://mcp.taskdeck.me/mcp
-claude mcp login taskdeck
-```
+In Claude's Chat tab, on the web and on mobile, TaskDeck is a connector instead: Customize → Connectors → Add custom connector, with the same URL.
 
 ## After setup
 

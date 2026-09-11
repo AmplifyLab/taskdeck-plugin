@@ -1,6 +1,6 @@
 {
     "name": "taskdeck",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Track every task on your TaskDeck board. /taskdeck:track connects TaskDeck to Claude if it is not connected yet and turns Autotrack on for a repository or a workspace.",
     "author": {
         "name": "AmplifyLab"

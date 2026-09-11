@@ -5,14 +5,14 @@
     },
     "metadata": {
         "description": "TaskDeck for Claude Code: the /taskdeck:track setup command.",
-        "version": "0.2.0"
+        "version": "0.3.0"
     },
     "plugins": [
         {
             "name": "taskdeck",
             "source": "./",
             "description": "Track every task on your TaskDeck board. /taskdeck:track connects TaskDeck to Claude if it is not connected yet and turns Autotrack on for a repository or a workspace.",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "keywords": ["taskdeck", "kanban", "tasks", "autotrack", "board", "mcp"],
             "category": "productivity"
         }
